@@ -2,8 +2,10 @@ import React, {FC, MouseEvent} from 'react';
 import {GamesType} from "../../types";
 import './GameBuy.css'
 import Button from "../button/Button";
-import {useDispatch} from "react-redux";
-import {setItemInCart} from "../../redux/cart/actions";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteItemFromCart, setItemInCart} from "../../redux/cart/actions";
+import {RootType} from "../../redux/RootReducer";
+import {IState} from "../../redux/cart/reducer";
 
 interface Props {
     game: GamesType
@@ -11,8 +13,16 @@ interface Props {
 
 const GameBuy:FC<Props> = ({game}) => {
     const dispatch = useDispatch()
+
+    const {itemsInCart} = useSelector<RootType, IState>(state => state.cart)
+    const isItemInCart = itemsInCart.some(item => item.id === game.id)
     const handleAddItemInCart = () => {
-        dispatch(setItemInCart(game))
+        if (isItemInCart){
+            dispatch(deleteItemFromCart(game.id))
+        }else {
+            dispatch(setItemInCart(game))
+        }
+
     }
     return (
         <div className={'game-buy'}>
@@ -20,9 +30,9 @@ const GameBuy:FC<Props> = ({game}) => {
             <Button
                 size={'s'}
                 onClick={handleAddItemInCart}
-                type={'primary'}
+                type={isItemInCart?'secondary':'primary'}
             >
-                В Корзину
+                {isItemInCart? 'Убрать из корзины': 'В Корзину'}
             </Button>
         </div>
     );

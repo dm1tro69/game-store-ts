@@ -7,7 +7,7 @@ export const setItemInCart = (game: GamesType): setItemInCartType => {
         payload: game
     }
 }
-export const deleteItemFromCart = (game: GamesType):deleteItemFromCartType => {
+export const deleteItemFromCart = (game: number):deleteItemFromCartType => {
     return {
         type: setItemInCartEnum.DELETE_ITEM_FROM_CART,
         payload: game
