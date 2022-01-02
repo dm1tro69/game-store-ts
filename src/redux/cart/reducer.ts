@@ -15,7 +15,7 @@ export const cartReducer = (state: IState = initialState, action: ActionsTypes):
         case setItemInCartEnum.SET_ITEM_IN_CART:
             return {...state, itemsInCart: [...state.itemsInCart, action.payload]}
         case setItemInCartEnum.DELETE_ITEM_FROM_CART:
-            const deleteItem = initialState.itemsInCart.filter(game => game.id !== action.payload)
+            const deleteItem = initialState.itemsInCart.filter(game => game.id !== action.payload.id)
             return {...state, itemsInCart: deleteItem}
         default:
             return state
