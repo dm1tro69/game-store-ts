@@ -2,6 +2,9 @@ import React from 'react';
 import './HomePage.css'
 import {GamesType} from "../../types";
 import GameItem from "../../components/game-item/GameItem";
+import {useSelector} from "react-redux";
+import {RootType} from "../../redux/RootReducer";
+import {IState} from "../../redux/cart/reducer";
 
 const GAMES: GamesType[] = [
     {
@@ -62,6 +65,7 @@ const GAMES: GamesType[] = [
 
 
 const HomePage = () => {
+
     return (
         <div className={'home-page'}>
             {GAMES.map((game) => <GameItem key={game.id} game={game}/>)}
