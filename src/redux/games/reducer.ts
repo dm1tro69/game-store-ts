@@ -2,7 +2,7 @@ import {GamesType} from "../../types";
 import {GamesActionType, gamesEnum} from "./types";
 
 
-interface IGamesState {
+export interface IGamesState {
     currentGame: GamesType | null
 }
 
