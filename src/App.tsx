@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import HomePage from "./pages/home-page/HomePage";
 import Header from "./components/header/Header";
 import GamePage from "./pages/game-page/GamePage";
-import OrderPage from "./pages/oredr-page/OrderPage";
+import OrderPage from "./pages/order-page/OrderPage";
 
 function App() {
   return (
